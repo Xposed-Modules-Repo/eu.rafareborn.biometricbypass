@@ -1,5 +1,11 @@
 # Biometric Bypass Module
 
+![GitHub stars](https://img.shields.io/github/stars/Xposed-Modules-Repo/es.rafagale.biometricbypass?style=social)
+![GitHub downloads](https://img.shields.io/github/downloads/Xposed-Modules-Repo/es.rafagale.biometricbypass/total)
+![GitHub Release Downloads](https://img.shields.io/github/downloads/Xposed-Modules-Repo/es.rafagale.biometricbypass/latest/total)
+![GitHub Release (latest by date)](https://img.shields.io/github/v/release/Xposed-Modules-Repo/es.rafagale.biometricbypass)
+
+
 ## Overview
 
 The Biometric Bypass Module is an Xposed module utilizing LSPosed's Modern Xposed API. It automatically bypasses the confirmation step following a successful face unlock, streamlining the authentication process for a hands-free user experience.
