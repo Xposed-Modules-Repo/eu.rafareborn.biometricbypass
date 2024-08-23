@@ -17,14 +17,15 @@ This module hooks into a System UI method responsible for managing the confirmat
 ## Visual Example
 
 <p align="center">
-    <img src="media/module_disabled.gif" width="200" alt="Default Behavior">
+    <img src="https://raw.githubusercontent.com/rafagale/biometric-bypass/master/media/module_disabled.gif" width="200" alt="Default Behavior">
     <br/>
     <strong>Default Behavior: Face unlock with manual confirmation required.</strong>
     <br/><br/>
-    <img src="media/module_enabled.gif" width="200" alt="Module Enabled">
+    <img src="https://raw.githubusercontent.com/rafagale/biometric-bypass/master/media/module_enabled.gif" width="200" alt="Module Enabled">
     <br/>
     <strong>Module Enabled: Face unlock with automatic confirmation bypass.</strong>
 </p>
+
 
 ## Compatibility
 
