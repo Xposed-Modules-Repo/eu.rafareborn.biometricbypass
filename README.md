@@ -27,8 +27,10 @@ This module hooks into a System UI method responsible for managing the confirmat
 
 ## Compatibility
 
-- **Supported Android Versions:** 11 and above
-- **Tested Device:** Pixel 8 Pro (husky) on Android 14 (Build: ap2a.240805.005)
+- **Supported Android Versions:** 11 and above- **Tested on:**
+  - Pixel 8 Pro (husky) with Android 14 (Build: ap2a.240805.005)
+  - Pixel 9 Pro (caiman) with **Android 15** (Build: AP3A.241005.015, Oct 2024)
+
 - **Xposed Framework:** LSPosed
 
 ## Installation Instructions
