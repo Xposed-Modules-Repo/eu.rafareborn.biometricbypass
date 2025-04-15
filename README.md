@@ -1,60 +1,86 @@
 # Biometric Bypass Module
 
+**Streamlines face unlock by skipping biometric confirmation in System UI (Android 10+)**
+
 ![GitHub downloads](https://img.shields.io/github/downloads/Xposed-Modules-Repo/es.rafagale.biometricbypass/total)
 ![GitHub Release (latest by date)](https://img.shields.io/github/v/release/Xposed-Modules-Repo/es.rafagale.biometricbypass)
 
-
 ## Overview
 
-The Biometric Bypass Module is an Xposed module utilizing LSPosed's Modern Xposed API. It automatically bypasses the confirmation step following a successful face unlock, streamlining the authentication process for a hands-free user experience.
+This LSPosed module streamlines face unlock by skipping the confirmation step enforced after biometric authentication. It applies the bypass system-wide — so it works across **all apps**, including banking or security-sensitive ones.
 
-## How It Works
+Android introduced the [`setConfirmationRequired(false)`](https://developer.android.com/identity/sign-in/biometric-auth#no-explicit-user-action) flag in Android 10 to support passive authentication flows (e.g., face unlock without requiring a tap). Since most apps don’t disable confirmation explicitly, Android defaults to requiring a manual tap, turning face unlock into a two-step chore.
 
-This module hooks into a System UI method responsible for managing the confirmation step after face authentication. By intercepting this process, the module automates the confirmation required by the new BiometricPrompt API, allowing users to proceed without additional input. This approach works universally across apps that rely on the default Android behavior and remains secure even in environments protected by Magisk deny lists, Magisk Hide, or Shamiko.
+This module ensures the confirmation step is skipped across all biometric flows, regardless of app implementation.
 
-## Visual Example
+---
+
+## How it Works
+
+Android 10 (API 29) added support for passive biometric flows via the `setConfirmationRequired(false)` flag in the BiometricPrompt API. This allows apps to skip the "tap to confirm" step after face unlock — **but only** if:
+
+- The app explicitly sets `setConfirmationRequired(false)`
+- The biometric method is classified as **Class 3 (strong)** (e.g., secure face unlock on Pixel 8+)
+
+Most apps don’t set this flag, and even when they do, some components still enforce the confirmation dialog.
+
+This module hooks System UI directly to eliminate that dialog, simulating the intended behavior system-wide, no matter what the app does.
+
+---
+
+## Visual Comparison
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/rafagale/biometric-bypass/master/media/module_disabled.gif" width="200" alt="Default Behavior">
+    <img src="https://github.com/rafareborn/biometric-bypass/blob/master/media/module_disabled.gif?raw=true" width="200" alt="Face unlock requiring manual confirmation">
     <br/>
     <strong>Default Behavior: Face unlock with manual confirmation required.</strong>
     <br/><br/>
-    <img src="https://raw.githubusercontent.com/rafagale/biometric-bypass/master/media/module_enabled.gif" width="200" alt="Module Enabled">
+    <img src="https://github.com/rafareborn/biometric-bypass/blob/master/media/module_enabled.gif?raw=true" width="200" alt="Face unlock with confirmation bypassed">
     <br/>
     <strong>Module Enabled: Face unlock with automatic confirmation bypass.</strong>
 </p>
 
+---
 
 ## Compatibility
 
-- **Supported Android Versions:** 11 and above- **Tested on:**
-  - Pixel 8 Pro (husky) with Android 14 (Build: ap2a.240805.005)
-  - Pixel 9 Pro (caiman) with **Android 15** (Build: AP3A.241005.015, Oct 2024)
+- **Android Versions:** 10 and up (API 29+)
+- **ROM Support:** AOSP-based ROMs, Pixel, and other close-to-stock systems  
+  OEM ROMs (e.g. MIUI, OneUI) are **not tested and probably won't work** due to heavy modifications
+- **App Support:** Works globally, including banking and security-sensitive apps by applying the bypass system-wide
 
-- **Xposed Framework:** LSPosed
+---
 
-## Installation Instructions
+## Installation
 
-1. Ensure [LSPosed](https://github.com/mywalkb/LSPosed_mod/releases) is installed.
-2. Download and install the Biometric Bypass Module APK.
-3. Activate the module in LSPosed.
-4. Restart System UI to apply changes.
+1. Install [LSPosed](https://github.com/LSPosed/LSPosed/releases)
+2. Download and install the module APK
+3. In LSPosed, enable the module and apply it to **System UI**
+4. Restart System UI or reboot the device
 
-## Additional Flavors
+---
 
-Legacy versions are available for older Xposed APIs:
+## Legacy Xposed Support (Archived)
 
-- **[Java Legacy Xposed API](https://github.com/rafagale/biometric-bypass/tree/legacy-xposed-java)**
-- **[Kotlin Legacy Xposed API](https://github.com/rafagale/biometric-bypass/tree/legacy-xposed-kotlin)**
+These branches are unmaintained and only exist for migration or historical reference:
 
-## Risks and Warnings
+- [Legacy Xposed - Java](https://github.com/rafareborn/biometric-bypass/tree/legacy-xposed-java)
+- [Legacy Xposed - Kotlin](https://github.com/rafareborn/biometric-bypass/tree/legacy-xposed-kotlin)
 
-Automating the confirmation step can reduce security and lead to unintended actions. Use this module with caution.
+---
 
-## Contributions
+## Risks
 
-Contributions are welcome. Submit a pull request or open an issue to help improve the module.
+Bypassing confirmation reduces friction and security. If someone spoofs your face or waves your phone at you while you’re asleep, they get in. Use responsibly.
 
-## Disclaimer
+---
 
-This module modifies system behavior and may impact device security. Use at your own risk.
+## Contributing
+
+Pull requests are welcome. Issues too.  
+---
+
+## License
+
+MIT. Use it, fork it, misconfigure it.  
+If your cat unlocks your phone and sends crypto to North Korea, that’s on you.
