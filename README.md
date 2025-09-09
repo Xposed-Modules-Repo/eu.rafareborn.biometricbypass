@@ -2,8 +2,8 @@
 
 **Streamlines face unlock by skipping biometric confirmation in System UI (Android 10+)**
 
-![GitHub downloads](https://img.shields.io/github/downloads/Xposed-Modules-Repo/es.rafagale.biometricbypass/total)
-![GitHub Release (latest by date)](https://img.shields.io/github/v/release/Xposed-Modules-Repo/es.rafagale.biometricbypass)
+![GitHub downloads](https://img.shields.io/github/downloads/Xposed-Modules-Repo/es.rxreborn.biometricbypass/total)
+![GitHub Release (latest by date)](https://img.shields.io/github/v/release/Xposed-Modules-Repo/es.rxreborn.biometricbypass)
 
 ## Overview
 
@@ -31,11 +31,11 @@ This module hooks System UI directly to eliminate that dialog, simulating the in
 ## Visual Comparison
 
 <p align="center">
-    <img src="https://github.com/rafareborn/biometric-bypass/blob/master/media/module_disabled.gif?raw=true" width="200" alt="Face unlock requiring manual confirmation">
+    <img src="https://github.com/rxreborn/biometric-bypass/blob/master/media/module_disabled.gif?raw=true" width="200" alt="Face unlock requiring manual confirmation">
     <br/>
     <strong>Default Behavior: Face unlock with manual confirmation required.</strong>
     <br/><br/>
-    <img src="https://github.com/rafareborn/biometric-bypass/blob/master/media/module_enabled.gif?raw=true" width="200" alt="Face unlock with confirmation bypassed">
+    <img src="https://github.com/rxreborn/biometric-bypass/blob/master/media/module_enabled.gif?raw=true" width="200" alt="Face unlock with confirmation bypassed">
     <br/>
     <strong>Module Enabled: Face unlock with automatic confirmation bypass.</strong>
 </p>
@@ -64,8 +64,8 @@ This module hooks System UI directly to eliminate that dialog, simulating the in
 
 These branches are unmaintained and only exist for migration or historical reference:
 
-- [Legacy Xposed - Java](https://github.com/rafareborn/biometric-bypass/tree/legacy-xposed-java)
-- [Legacy Xposed - Kotlin](https://github.com/rafareborn/biometric-bypass/tree/legacy-xposed-kotlin)
+- [Legacy Xposed - Java](https://github.com/rxreborn/biometric-bypass/tree/legacy-xposed-java)
+- [Legacy Xposed - Kotlin](https://github.com/rxreborn/biometric-bypass/tree/legacy-xposed-kotlin)
 
 ---
 
