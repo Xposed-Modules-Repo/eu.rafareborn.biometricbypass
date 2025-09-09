@@ -2,8 +2,8 @@
 
 **Streamlines face unlock by skipping biometric confirmation in System UI (Android 10+)**
 
-![GitHub downloads](https://img.shields.io/github/downloads/Xposed-Modules-Repo/es.rxreborn.biometricbypass/total)
-![GitHub Release (latest by date)](https://img.shields.io/github/v/release/Xposed-Modules-Repo/es.rxreborn.biometricbypass)
+![GitHub downloads](https://img.shields.io/github/downloads/Xposed-Modules-Repo/es.rafareborn.biometricbypass/total)
+![GitHub Release (latest by date)](https://img.shields.io/github/v/release/Xposed-Modules-Repo/es.rafareborn.biometricbypass)
 
 ## Overview
 
