@@ -5,11 +5,18 @@
 ![GitHub downloads](https://img.shields.io/github/downloads/Xposed-Modules-Repo/eu.rafareborn.biometricbypass/total)
 ![GitHub Release (latest by date)](https://img.shields.io/github/v/release/Xposed-Modules-Repo/eu.rafareborn.biometricbypass)
 
+<p>
+  <a href="https://f-droid.org/packages/eu.rafareborn.biometricbypass"><img src="https://raw.githubusercontent.com/hxreborn/biometric-bypass/master/.github/assets/badge_fdroid.png" height="80" alt="Get it on F-Droid" /></a>
+  <a href="https://apt.izzysoft.de/packages/eu.rafareborn.biometricbypass"><img src="https://raw.githubusercontent.com/hxreborn/biometric-bypass/master/.github/assets/badge_izzyondroid.png" height="80" alt="Get it on IzzyOnDroid" /></a>
+  <a href="https://github.com/hxreborn/biometric-bypass/releases"><img src="https://raw.githubusercontent.com/hxreborn/biometric-bypass/master/.github/assets/badge_github.png" height="80" alt="Get it on GitHub" /></a>
+  <a href="http://apps.obtainium.imranr.dev/redirect.html?r=obtainium://app/%7B%22id%22%3A%22eu.rafareborn.biometricbypass%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fhxreborn%2Fbiometric-bypass%22%2C%22author%22%3A%22rafareborn%22%2C%22name%22%3A%22Biometric%20Bypass%22%2C%22additionalSettings%22%3A%22%7B%5C%22includePrereleases%5C%22%3Afalse%7D%22%7D"><img src="https://raw.githubusercontent.com/hxreborn/biometric-bypass/master/.github/assets/badge_obtainium.png" height="80" alt="Get it on Obtainium" /></a>
+</p>
+
 ## Overview
 
 This LSPosed module streamlines face unlock by skipping the confirmation step enforced after biometric authentication. It applies the bypass system-wide — so it works across **all apps**, including banking or security-sensitive ones.
 
-Android introduced the [`setConfirmationRequired(false)`](https://developer.android.com/identity/sign-in/biometric-auth#no-explicit-user-action) flag in Android 10 to support passive authentication flows (e.g., face unlock without requiring a tap). Since most apps don’t disable confirmation explicitly, Android defaults to requiring a manual tap, turning face unlock into a two-step chore.
+Android introduced the [`setConfirmationRequired(false)`](https://developer.android.com/identity/sign-in/biometric-auth#no-explicit-user-action) flag in Android 10 to support passive authentication flows (e.g., face unlock without requiring a tap). Since most apps don't disable confirmation explicitly, Android defaults to requiring a manual tap, turning face unlock into a two-step chore.
 
 This module ensures the confirmation step is skipped across all biometric flows, regardless of app implementation.
 
@@ -22,7 +29,7 @@ Android 10 (API 29) added support for passive biometric flows via the `setConfir
 - The app explicitly sets `setConfirmationRequired(false)`
 - The biometric method is classified as **Class 3 (strong)** (e.g., secure face unlock on Pixel 8+)
 
-Most apps don’t set this flag, and even when they do, some components still enforce the confirmation dialog.
+Most apps don't set this flag, and even when they do, some components still enforce the confirmation dialog.
 
 This module hooks System UI directly to eliminate that dialog, simulating the intended behavior system-wide, no matter what the app does.
 
@@ -71,7 +78,7 @@ These branches are unmaintained and only exist for migration or historical refer
 
 ## Risks
 
-Bypassing confirmation reduces friction and security. If someone spoofs your face or waves your phone at you while you’re asleep, they get in. Use responsibly.
+Bypassing confirmation reduces friction and security. If someone spoofs your face or waves your phone at you while you're asleep, they get in. Use responsibly.
 
 ---
 
@@ -84,4 +91,4 @@ Pull requests are welcome. Issues too.
 ## License
 
 MIT. Use it, fork it, misconfigure it.  
-If your cat unlocks your phone and sends crypto to North Korea, that’s on you.
+If your cat unlocks your phone and sends crypto to North Korea, that's on you.
