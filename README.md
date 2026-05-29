@@ -1,9 +1,11 @@
 # Biometric Bypass Module
 
-**Streamlines face unlock by skipping biometric confirmation in System UI (Android 10+)**
+Streamlines face unlock by skipping biometric confirmation in System UI (Android 10+)
 
-![GitHub downloads](https://img.shields.io/github/downloads/Xposed-Modules-Repo/eu.rafareborn.biometricbypass/total)
-![GitHub Release (latest by date)](https://img.shields.io/github/v/release/Xposed-Modules-Repo/eu.rafareborn.biometricbypass)
+![Android 10+](https://img.shields.io/badge/Android-10%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![libxposed API 101](https://img.shields.io/badge/libxposed-API_101-ff69b4?style=for-the-badge)
+[![Release](https://img.shields.io/github/v/release/hxreborn/biometric-bypass?style=for-the-badge&logo=github)](https://github.com/hxreborn/biometric-bypass/releases/latest)
+[![Build](https://img.shields.io/github/actions/workflow/status/hxreborn/biometric-bypass/android.yml?label=build&style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/hxreborn/biometric-bypass/actions/workflows/android.yml)
 
 <p>
   <a href="https://f-droid.org/packages/eu.rafareborn.biometricbypass"><img src="https://raw.githubusercontent.com/hxreborn/biometric-bypass/master/.github/assets/badge_fdroid.png" height="60" alt="Get it on F-Droid" /></a>
@@ -14,58 +16,41 @@
 
 ## Overview
 
-This LSPosed module streamlines face unlock by skipping the confirmation step enforced after biometric authentication. It applies the bypass system-wide — so it works across **all apps**, including banking or security-sensitive ones.
+This Xposed module streamlines face unlock by skipping the confirmation step enforced after biometric authentication. The bypass applies system-wide, so it works across all apps, including banking or security-sensitive ones.
 
-Android introduced the [`setConfirmationRequired(false)`](https://developer.android.com/identity/sign-in/biometric-auth#no-explicit-user-action) flag in Android 10 to support passive authentication flows (e.g., face unlock without requiring a tap). Since most apps don't disable confirmation explicitly, Android defaults to requiring a manual tap, turning face unlock into a two-step chore.
-
-This module ensures the confirmation step is skipped across all biometric flows, regardless of app implementation.
-
----
+By default, even after your face is recognized, Android makes you tap to confirm before it lets you through, turning face unlock into a two-step chore. This module removes that step across all biometric flows, regardless of how each app is built.
 
 ## How it Works
 
-Android 10 (API 29) added support for passive biometric flows via the `setConfirmationRequired(false)` flag in the BiometricPrompt API. This allows apps to skip the "tap to confirm" step after face unlock — **but only** if:
+Android 10 (API 29) added support for passive biometric flows via the [`setConfirmationRequired(false)`](https://developer.android.com/identity/sign-in/biometric-auth#no-explicit-user-action) flag in the BiometricPrompt API. This lets apps skip the "tap to confirm" step after face unlock, but only if:
 
-- The app explicitly sets `setConfirmationRequired(false)`
-- The biometric method is classified as **Class 3 (strong)** (e.g., secure face unlock on Pixel 8+)
+- The app explicitly sets the flag to `false`
+- The biometric method is classified as Class 3 (strong) (e.g. secure face unlock on Pixel 8+)
 
 Most apps don't set this flag, and even when they do, some components still enforce the confirmation dialog.
 
-This module hooks System UI directly to eliminate that dialog, simulating the intended behavior system-wide, no matter what the app does.
-
----
+This module hooks `System UI` directly to remove that dialog, simulating the intended behavior system-wide no matter what the app does.
 
 ## Visual Comparison
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/hxreborn/biometric-bypass/master/media/module_disabled.gif" width="200" alt="Face unlock requiring manual confirmation">
-    <br/>
-    <strong>Default Behavior: Face unlock with manual confirmation required.</strong>
-    <br/><br/>
-    <img src="https://raw.githubusercontent.com/hxreborn/biometric-bypass/master/media/module_enabled.gif" width="200" alt="Face unlock with confirmation bypassed">
-    <br/>
-    <strong>Module Enabled: Face unlock with automatic confirmation bypass.</strong>
-</p>
-
----
+| Default Behavior | Module Enabled |
+|:---:|:---:|
+| <img src="https://raw.githubusercontent.com/hxreborn/biometric-bypass/master/media/module_disabled.gif" width="220" alt="Face unlock requiring manual confirmation" /> | <img src="https://raw.githubusercontent.com/hxreborn/biometric-bypass/master/media/module_enabled.gif" width="220" alt="Face unlock with confirmation bypassed" /> |
+| Face unlock with manual confirmation required | Face unlock with automatic confirmation bypass |
 
 ## Compatibility
 
 - **Android Versions:** 10 and up (API 29+)
-- **ROM Support:** AOSP-based ROMs, Pixel, and other close-to-stock systems  
-  OEM ROMs (e.g. MIUI, OneUI) are **not tested and probably won't work** due to heavy modifications
-- **App Support:** Works globally, including banking and security-sensitive apps by applying the bypass system-wide
-
----
+- **ROM Support:** AOSP-based ROMs, Pixel, and other close-to-stock systems.
+  OEM ROMs (e.g. MIUI, OneUI) are not tested and probably won't work due to heavy modifications
+- **App Support:** Works globally, including banking and security-sensitive apps, by applying the bypass system-wide
 
 ## Installation
 
-1. Install [LSPosed](https://github.com/LSPosed/LSPosed/releases)
+1. Install [Xposed](https://github.com/LSPosed/LSPosed/releases) with API 101 support
 2. Download and install the module APK
-3. In LSPosed, enable the module and apply it to **System UI**
-4. Restart System UI or reboot the device
-
----
+3. In your Xposed manager, enable the module and apply it to `System UI`
+4. Restart `System UI` or reboot the device
 
 ## Legacy Xposed Support (Archived)
 
@@ -74,21 +59,14 @@ These branches are unmaintained and only exist for migration or historical refer
 - [Legacy Xposed - Java](https://github.com/hxreborn/biometric-bypass/tree/legacy-xposed-java)
 - [Legacy Xposed - Kotlin](https://github.com/hxreborn/biometric-bypass/tree/legacy-xposed-kotlin)
 
----
-
 ## Risks
 
 Bypassing confirmation reduces friction and security. If someone spoofs your face or waves your phone at you while you're asleep, they get in. Use responsibly.
 
----
-
 ## Contributing
 
-Pull requests are welcome. Issues too.  
-
----
+Pull requests are welcome. [Issues](https://github.com/hxreborn/biometric-bypass/issues) too.
 
 ## License
 
-MIT. Use it, fork it, misconfigure it.  
-If your cat unlocks your phone and sends crypto to North Korea, that's on you.
+MIT. Use it, fork it, misconfigure it.
